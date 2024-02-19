@@ -1,0 +1,74 @@
+<header
+  id='header-nav'
+  class='fixed top-0 z-50 w-full py-2 shadow-[0_3px_2px_-2px] shadow-blue-50 bg-white'
+>
+  <div class='mx-auto max-w-6xl flex px-8 items-center justify-between'>
+    <div class='flex flex-grow basis-0'>
+      <a href='/'>
+        <img class='h-10' src='/logo2.webp' alt='Logo del ISTS' />
+      </a>
+    </div>
+
+    <!-- Menú de navegación para pantallas grandes -->
+    <nav
+      class='hidden md:flex flex-grow basis-0 w-full gap-x-6 text-lg md:justify-end font-bold'
+    >
+      <a class='hover:text-[var(--secondary)]' href='/'>INICIO</a>
+      <a
+        class='hover:text-[var(--secondary)]'
+        href='https://tecnologicosudamericano.edu.ec/'>ISTS</a
+      >
+    </nav>
+
+    <!-- Botón de menú para pantallas pequeñas -->
+    <button
+      id='menu-toggle'
+      class='flex flex-grow basis-0 justify-end text-3xl md:hidden z-50'
+    >
+      <span id='menu-icon'>☰</span>
+    </button>
+  </div>
+
+  <!-- Menú de navegación móvil para pantallas pequeñas -->
+  <nav
+    id='mobile-menu'
+    class='bg-blue-50/50 hidden z-50 fixed inset-x-0 bottom-0 top-14'
+  >
+    <ul
+      id='menu-link'
+      class='bg-white shadow-sm flex flex-col list-none absolute inset-x-0 justify-center text-center font-bold mx-6 my-4 rounded-2xl'
+    >
+      <a
+        class='p-6 w-full justify-center hover:text-[var(--secondary)]'
+        href='/'>INICIO</a
+      >
+      <a
+        class='p-6 w-full hover:text-[var(--secondary)]'
+        href='https://tecnologicosudamericano.edu.ec/'>ISTS</a
+      >
+    </ul>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle')
+    const mobileMenu = document.getElementById('mobile-menu')
+    const menuIcon = document.getElementById('menu-icon')
+    const menuLink = document.getElementById('menu-link')
+
+    if (!menuToggle || !mobileMenu || !menuIcon || !menuLink) {
+      return
+    }
+
+    const toggleNavbarVisibility = () => {
+      mobileMenu.classList.toggle('hidden')
+      mobileMenu.classList.toggle('flex')
+      menuIcon.textContent = menuIcon.textContent === '☰' ? '✕' : '☰'
+    }
+
+    mobileMenu.addEventListener('click', toggleNavbarVisibility)
+    menuToggle.addEventListener('click', toggleNavbarVisibility)
+    menuLink.addEventListener('click', (e) => e.stopPropagation())
+  })
+</script>

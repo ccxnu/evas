@@ -1,0 +1,154 @@
+---
+interface Props {
+  title: string
+  subtitle: string
+  href: string
+  src: string
+  alt: string
+}
+
+const { href, title, subtitle, src, alt } = Astro.props
+---
+
+<div
+  class='card bg-white rounded-2xl relative w-full h-[350px] p-4 text-center shadow-blue-50'
+>
+  <div class='image flex justify-center bg-white rounded-2xl'>
+    <img class='h-[200px] w-auto' src={src} alt={alt} />
+  </div>
+
+  <div class='mt-[-24px] mb-6'>
+    <a
+      class="button invisible font-['Walkway_Black'] font-bold tracking-[4px] border-none bg-[var(--secondary)] rounded-full py-3.5 px-6 text-white"
+      href={href}
+      role='button'
+      target='_blank'>INGRESAR</a
+    >
+  </div>
+
+  <h2 class='text-xl tracking-[3px] font-bold text-[var(--teal)]'>
+    {subtitle}
+  </h2>
+  <h3 class='text-2xl tracking-tight font-bold'>{title}</h3>
+</div>
+
+<style>
+  .card {
+    box-shadow:
+      -1px 2px 15px -3px #eff6ff,
+      -1px 2px 6px -4px #eff6ff;
+  }
+  .card:hover::before,
+  .card:hover::after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 350px;
+    width: 100%;
+    background: var(--teal);
+    border-radius: 1rem;
+    z-index: -1;
+    animation: clockwise 1s infinite;
+  }
+
+  .card:hover::after {
+    background: var(--primary);
+    animation: counterclockwise 2s infinite;
+  }
+
+  .card:hover .image {
+    transform: translateY(-25%) scale(0.95);
+    box-shadow:
+      -1px 2px 15px -3px #eff6ff,
+      -1px 2px 6px -4px #eff6ff;
+    transition:
+      transform 250ms ease,
+      opacity 150ms linear;
+  }
+
+  .card:hover .button {
+    transform: translateY(-25%);
+    visibility: visible;
+    transition:
+      transform 250ms ease,
+      opacity 150ms linear;
+  }
+
+  @keyframes clockwise {
+    0% {
+      top: -4px;
+      left: 0;
+    }
+    12% {
+      top: -2px;
+      left: 2px;
+    }
+    25% {
+      top: 0;
+      left: 4px;
+    }
+    37% {
+      top: 2px;
+      left: 2px;
+    }
+    50% {
+      top: 4px;
+      left: 0;
+    }
+    62% {
+      top: 2px;
+      left: -2px;
+    }
+    75% {
+      top: 0;
+      left: -4px;
+    }
+    87% {
+      top: -2px;
+      left: -2px;
+    }
+    100% {
+      top: -4px;
+      left: 0;
+    }
+  }
+
+  @keyframes counterclockwise {
+    0% {
+      top: -4px;
+      right: 0;
+    }
+    12% {
+      top: -2px;
+      right: 2px;
+    }
+    25% {
+      top: 0;
+      right: 4px;
+    }
+    37% {
+      top: 2px;
+      right: 2px;
+    }
+    50% {
+      top: 6px;
+      right: 0;
+    }
+    62% {
+      top: 2px;
+      right: -2px;
+    }
+    75% {
+      top: 0;
+      right: -4px;
+    }
+    87% {
+      top: -2px;
+      right: -2px;
+    }
+    100% {
+      top: -4px;
+      right: 0;
+    }
+  }
+</style>

@@ -1,0 +1,55 @@
+---
+import Header from '@/components/Header.astro'
+import '@fontsource-variable/raleway'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content={description} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/logo.webp' />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: walkway black;
+    font-style: normal;
+    font-weight: 400;
+    src:
+      local('Walkway Black'),
+      url(https://fonts.cdnfonts.com/s/468/Walkway_Black.woff) format('woff');
+  }
+
+  :root {
+    --primary: #007579;
+    --secondary: #1c4794;
+    --teal: #19a078;
+    --text: #2e3439;
+  }
+
+  html {
+    font-size: 100%;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Raleway Variable', system-ui, sans-serif;
+    color: var(--text);
+    background-color: #eff6ff4d;
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import Footer from '@/components/Footer.astro'
+import Arrow from '@/components/logos/Arrow.astro'
+---
+
+<Layout
+  title='EVAS ISTS'
+  description='Landing Page que reúne los diferentes sitios del Instituto Superior Técnologico Sudamericano.'
+>
+  <main>
+    <h1
+      class='font-bold text-4xl md:text-5xl mx-auto text-center px-6 pt-24 pb-10 animate-jump-in animate-duration-700'
+    >
+      Entorno Virtual de Aprendizaje ISTS
+    </h1>
+    <Card />
+    <button
+      type='button'
+      id='back-to-top'
+      class='hidden fixed bottom-12 right-8'><Arrow class='size-11' /></button
+    >
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Get the button
+  const arrow = document.getElementById('back-to-top') as HTMLInputElement
+
+  // When the user scrolls down 25px from the top of the document, show the button
+
+  const scrollFunction = () => {
+    if (
+      document.body.scrollTop > 25 ||
+      document.documentElement.scrollTop > 25
+    ) {
+      arrow.classList.remove('hidden')
+    } else {
+      arrow.classList.add('hidden')
+    }
+  }
+  const backToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  arrow.addEventListener('click', backToTop)
+
+  window.addEventListener('scroll', scrollFunction)
+</script>
