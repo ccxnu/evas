@@ -3,6 +3,8 @@ import Facebook from '@/components/logos/Facebook.astro'
 import Instagram from '@/components/logos/Instagram.astro'
 import Tiktok from '@/components/logos/Tiktok.astro'
 import Youtube from '@/components/logos/Youtube.astro'
+
+const year = new Date().getFullYear()
 ---
 
 <footer class='static w-full bg-white'>
@@ -12,9 +14,9 @@ import Youtube from '@/components/logos/Youtube.astro'
     <p
       class='flex text-center flex-col self-center md:text-left md:block text-lg'
     >
-      COPYRIGHT © 2023 <a href='https://tecnologicosudamericano.edu.ec/'
-        >ISTS.</a
-      > RESERVADOS TODOS LOS DERECHOS.
+      COPYRIGHT © {year}
+      <a href='https://tecnologicosudamericano.edu.ec/'>ISTS.</a> RESERVADOS TODOS
+      LOS DERECHOS.
     </p>
     <nav
       class='flex row-start-1 justify-center gap-6 py-6 mx-auto md:col-start-2 md:justify-end'
